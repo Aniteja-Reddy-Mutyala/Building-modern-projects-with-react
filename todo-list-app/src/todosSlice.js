@@ -12,19 +12,19 @@ export const todosSlice=createSlice({
     },
     reducers:
     {
-        createTodo:state=>{
+        createTodo:(state,action)=>{
             state.value=[...state.value,{
-                text:"new Todo",
+                text:action.payload,
                 isCompleted:false
             }]
         },
-        markTodoAsCompleted:state =>{
-            const text="new Todo"
+        markTodoAsCompleted:(state,action) =>{
+            const text=action.payload
             const todo=state.value.find(t=> t.text===text);
             todo.isCompleted=true;
         },
-        deleteTodo:state =>{
-            const text="new Todo"
+        deleteTodo:(state,action) =>{
+            const text=action.payload
             state.value=state.value.filter(t=>t.text!==text)
         }
 
