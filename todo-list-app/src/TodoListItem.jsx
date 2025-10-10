@@ -1,8 +1,15 @@
 import { useDispatch } from "react-redux"
 import { markTodoAsCompleted ,deleteTodo } from "./thunks";
 import styled from "styled-components";
+const getBackgroundColor = ({ important }) => {
+  if (important) {
+    return 'background-color: yellow;';
+  } else {
+    return 'background-color: white;';
+  }
+}
 const CardContainer=styled.div`
-${props=>props.important?'background-color:yellow;':'background-color:white;'}
+${getBackgroundColor}
 border-radius:10px;
 box-shadow:0 2px 5px rgba(0,0,0.1,0.5);
 padding:15px;
