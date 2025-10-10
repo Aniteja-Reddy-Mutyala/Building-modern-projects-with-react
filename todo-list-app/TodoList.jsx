@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import NewTodoForm from "./src/NewTodoForm";
 import TodoListItem from "./src/TodoListItem";
-import { getTodos,getTodosLoading } from "./src/selectors";
+import { getTodos,getTodosLoading,getCompletedTodos,getIncompletedTodos } from "./src/selectors";
 export default function TodoList(){
     const todosAreLoading=useSelector(getTodosLoading)
     const todos=useSelector(getTodos);
+    const completedTodos=useSelector(getCompletedTodos)
+    const incompletedTodos=useSelector(getIncompletedTodos);
 
     return(
         <>
@@ -15,11 +17,11 @@ export default function TodoList(){
         (
             <>
           <h3>Completed: </h3>
-        {todos.map((todo)=>(
+        {completedTodos.map((todo)=>(
             <TodoListItem todo={todo} key={todo.id}  />
         ))}
         <h3>Incompleted: </h3>
-        {todos.map((todo)=>(
+        {incompletedTodos.map((todo)=>(
             <TodoListItem todo={todo} key={todo.id} />
         ))}
         </>

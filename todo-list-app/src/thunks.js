@@ -42,7 +42,7 @@ export const markTodoAsCompleted=(todoId)=>async(dispatch,getState)=>{
     try{
        const response=await axios.put("api/todos/"+todoId,{isCompleted:true})
        const completedTodo=response.data
-       const updatedTodos=getState().todos.value.concat(completedTodo)
+       const updatedTodos=getState().todos.value.map(todo=>todo.id===todoId?completedTodo:todo)
        dispatch(todosUpdated(updatedTodos))
     }
     catch(e){
