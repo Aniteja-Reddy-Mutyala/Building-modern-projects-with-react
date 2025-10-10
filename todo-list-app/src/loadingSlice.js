@@ -11,6 +11,7 @@ export const loadingsSlice=createSlice({
     reducers:
     {
         loadingStarted:(state,action)=>{
+            console.log("Loading started")
             state.value.completed=false
         },
         loadingCompleted:(state,action)=>{
