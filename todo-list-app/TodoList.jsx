@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import NewTodoForm from "./src/NewTodoForm";
 import TodoListItem from "./src/TodoListItem";
+import { getTodos,getTodosLoading } from "./src/selectors";
 export default function TodoList(){
-    const todosAreLoading=useSelector(state=>!state.loading.value.completed)
-    const todos=useSelector(state=>state.todos.value);
+    const todosAreLoading=useSelector(getTodosLoading)
+    const todos=useSelector(getTodos);
 
     return(
         <>
